@@ -3,11 +3,9 @@ package Random.LP.FirstInterview;
 
 import java.util.ArrayList;
 
-// stack
-// arraylist ->
-//          [a, b, c] <-
-// linkedList ->
-//          [a] <-> [b] <-> [c]
+/**
+ * Question
+ */
 
 class BrowserHistory {
 
@@ -83,4 +81,6 @@ class Solution {
         hist.visit("cde");
         hist.print(); // print to stdout -> "cde -> abc"
     }
+
+    // Decide quickly
 }

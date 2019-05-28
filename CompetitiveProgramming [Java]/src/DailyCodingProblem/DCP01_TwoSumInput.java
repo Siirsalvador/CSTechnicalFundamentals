@@ -2,7 +2,7 @@ package DailyCodingProblem;
 
 import java.util.HashMap;
 
-public class TwoSumInput {
+public class DCP01_TwoSumInput {
 
     public static void main(String[] main) {
         int[] arrayOfNum = {10, 15, 3, 7};

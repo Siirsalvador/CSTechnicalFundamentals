@@ -10,7 +10,7 @@ public class Day8_Maps {
         Scanner scan = new Scanner(System.in);
         int numberOfEntries = scan.nextInt();
 
-        Map<String, Integer> phoneBookMap = new HashMap();
+        Map<String, Integer> phoneBookMap = new HashMap<>();
         for (int i = 0; i < numberOfEntries; i++) {
             String name = scan.next().toLowerCase();
             int phone = scan.nextInt();
