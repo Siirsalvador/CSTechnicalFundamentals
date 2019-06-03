@@ -1,4 +1,4 @@
-package Random.PalantirPhoneScreen;
+package PhoneScreens.PalantirPhoneScreen;
 
 import java.util.*;
 

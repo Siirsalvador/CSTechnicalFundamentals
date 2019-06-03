@@ -1,4 +1,4 @@
-package Random.Others;
+package UncategorizedChallenges;
 
 public class SecondLargestNumberInArray {
 

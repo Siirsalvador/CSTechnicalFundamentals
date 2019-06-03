@@ -1,4 +1,4 @@
-package Random.PhoneInputShell;
+package UncategorizedChallenges.PhoneInputShell;
 
 import java.util.ArrayList;
 import java.util.Arrays;
