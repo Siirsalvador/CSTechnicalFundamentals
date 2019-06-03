@@ -1,4 +1,4 @@
-package Random;
+package UncategorizedChallenges;
 
 import java.time.Instant;
 

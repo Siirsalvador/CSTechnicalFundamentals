@@ -1,4 +1,4 @@
-package Random.HENNGEChallenge003;
+package PhoneScreens.HENNGEChallenge003;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Random.Others;
+package UncategorizedChallenges;
 
 import java.util.Arrays;
 import java.util.TreeSet;

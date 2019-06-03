@@ -1,4 +1,4 @@
-package JavaDesignPatterns.StrategyDesignPattern;
+package JavaDesignPatterns.BehavioralDesignPatterns.StrategyDesignPattern;
 
 public class QROnboardingStrategy implements OnboardingDesignStrategy {
 
