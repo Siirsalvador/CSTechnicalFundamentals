@@ -32,3 +32,13 @@ package JavaDesignPatterns.BehavioralDesignPatterns;
 
     Example: Creating a Computer System - can be Macbook or Windows, but it follows a general procedure
  */
+
+/*
+   Mediator Design Pattern
+
+   Mediator pattern focuses on providing a mediator between objects for communication, implementing loose-coupling between objects.
+   The system objects that communicate each other are called Colleagues.
+
+   Air traffic controller is a great example of mediator pattern where the airport control room works as a
+   mediator for communication between different flights [www.journaldev.com]
+ */
