@@ -42,3 +42,18 @@ package JavaDesignPatterns.BehavioralDesignPatterns;
    Air traffic controller is a great example of mediator pattern where the airport control room works as a
    mediator for communication between different flights [www.journaldev.com]
  */
+
+/*
+   Observer Design Pattern
+
+   Observer design pattern is useful when you are interested in the state of an object and want to get notified whenever there is any
+   change.
+
+   In observer pattern, the object that listens on the state of another object is called an Observer
+   and the object that is being watched is called Subject.
+
+   Model-View-Controller (MVC) frameworks also use Observer pattern where Model is the Subject and Views are observers
+   that can register to get notified of any change to the model.
+
+   Observer design pattern is also called as publish-subscribe pattern.
+ */
