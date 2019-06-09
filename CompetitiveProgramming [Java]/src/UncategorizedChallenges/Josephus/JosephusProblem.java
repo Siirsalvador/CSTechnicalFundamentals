@@ -1,4 +1,4 @@
-package UncategorizedChallenges;
+package UncategorizedChallenges.Josephus;
 
 import java.util.ArrayList;
 
@@ -23,28 +23,22 @@ public class JosephusProblem {
         return findLivingIndex(listOfIndexes, deleteIdx, numberToSkip);
     }
 
-    private static int josephusN(int numberOfPeople, int numberToSkip) {
+    private static int lastManStanding(int numberOfPeople, int numberToSkip) {
 
         if (numberOfPeople == 1)
             return 1;
 
-        if (numberOfPeople == 2)
-            return 1;
-
-        return (josephusN(numberOfPeople - 1, numberToSkip) + numberToSkip - 1) % numberOfPeople + 1;
+        return ((lastManStanding(numberOfPeople - 1, numberToSkip) + numberToSkip - 1) % numberOfPeople) + 1;
     }
 
     public static void main(String[] args) {
 
         ArrayList<Integer> listOfIdxs = new ArrayList<>();
-        int numberOfPeople = 41;
-        for (int i = 0; i < numberOfPeople; i++) {
+        for (int i = 0; i < 41; i++)
             listOfIdxs.add(i + 1);
-        }
 
         System.out.println(findLivingIndex(listOfIdxs, 0, 2));
-
-        System.out.println(josephusN(41, 2));
+        System.out.println(lastManStanding(41, 2));
     }
 
 }
