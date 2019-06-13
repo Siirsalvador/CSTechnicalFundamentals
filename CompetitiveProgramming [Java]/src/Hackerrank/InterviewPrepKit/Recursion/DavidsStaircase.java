@@ -23,12 +23,15 @@ public class DavidsStaircase {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        String regex = "(\r\n[\n\r\u2028\u2029\u0085])?";
+
         int s = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        scanner.skip(regex);
 
         for (int sItr = 0; sItr < s; sItr++) {
             int n = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+            scanner.skip(regex);
+
 
             dpArr = new int[n+1];
 
