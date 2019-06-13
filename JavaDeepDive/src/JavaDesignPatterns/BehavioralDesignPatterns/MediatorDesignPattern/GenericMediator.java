@@ -3,11 +3,11 @@ package JavaDesignPatterns.BehavioralDesignPatterns.MediatorDesignPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AirTrafficMediatorImpl implements AirTrafficMediator {
+public class GenericMediator implements AirTrafficMediator {
 
     private List<Airline> airlines;
 
-    AirTrafficMediatorImpl() {
+    GenericMediator() {
         this.airlines = new ArrayList<>();
     }
 

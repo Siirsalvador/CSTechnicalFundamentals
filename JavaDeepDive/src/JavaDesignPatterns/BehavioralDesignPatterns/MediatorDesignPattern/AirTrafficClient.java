@@ -3,7 +3,7 @@ package JavaDesignPatterns.BehavioralDesignPatterns.MediatorDesignPattern;
 public class AirTrafficClient {
 
     public static void main(String[] args) {
-        AirTrafficMediatorImpl trafficMediator = new AirTrafficMediatorImpl();
+        GenericMediator trafficMediator = new GenericMediator();
 
         trafficMediator.addAirline(new Boeing(trafficMediator, "Boeing737"));
         trafficMediator.addAirline(new Boeing(trafficMediator, "Boeing747"));
