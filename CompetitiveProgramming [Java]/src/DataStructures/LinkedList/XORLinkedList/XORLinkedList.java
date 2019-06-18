@@ -13,7 +13,7 @@ package DataStructures.LinkedList.XORLinkedList;
  * next_node = addr(previous_node) ^ npx(current_node) OR addr(previous_node) ^ (addr(previous_node) ^ addr(next_node))
  */
 
-public class XORLinkedListDS {
+public class XORLinkedList {
 
     private XORLinkedListNode head;
 
@@ -22,8 +22,8 @@ public class XORLinkedListDS {
         return new XORLinkedListNode(previousNode, nextNode);
     }
 
-    public static void insertNodeAtHead(XORLinkedListDS xorLinkedListDS, int data) {
-        XORLinkedListNode headNode = xorLinkedListDS.head;
+    public static void insertNodeAtHead(XORLinkedList xorLinkedList, int data) {
+        XORLinkedListNode headNode = xorLinkedList.head;
 
         XORLinkedListNode newHeadNode = new XORLinkedListNode(data);
         newHeadNode.npx = calculateXORForCurrentNode(null, headNode);
@@ -33,18 +33,18 @@ public class XORLinkedListDS {
             headNode.npx = calculateXORForCurrentNode(newHeadNode, nextNodeAddress);
         }
 
-        xorLinkedListDS.head = newHeadNode;
+        xorLinkedList.head = newHeadNode;
     }
 
-    public static void add(XORLinkedListDS xorLinkedListDS, int data) {
+    public static void add(XORLinkedList xorLinkedList, int data) {
         XORLinkedListNode newLastNode = new XORLinkedListNode(data);
 
-        if (xorLinkedListDS.head == null) {
-            xorLinkedListDS.head = newLastNode;
+        if (xorLinkedList.head == null) {
+            xorLinkedList.head = newLastNode;
             return;
         }
 
-        XORLinkedListNode currentNode = xorLinkedListDS.head;
+        XORLinkedListNode currentNode = xorLinkedList.head;
         //Store address of previous node
         XORLinkedListNode prevNode = null;
         XORLinkedListNode nextNode;
@@ -61,9 +61,9 @@ public class XORLinkedListDS {
 
     }
 
-    public static int get(XORLinkedListDS xorLinkedListDS, int index) {
+    public static int get(XORLinkedList xorLinkedList, int index) {
 
-        XORLinkedListNode currentNode = xorLinkedListDS.head;
+        XORLinkedListNode currentNode = xorLinkedList.head;
         XORLinkedListNode prevNode = null;
         XORLinkedListNode nextNode;
         int count = 0;
@@ -81,5 +81,25 @@ public class XORLinkedListDS {
         }
 
         return -1;
+    }
+}
+
+class XORLinkedListNode {
+    int data;
+    XORLinkedListNode npx;
+
+    XORLinkedListNode(int data) {
+        this.data = data;
+    }
+
+    XORLinkedListNode(XORLinkedListNode npx) {
+        this.npx = npx;
+    }
+
+    XORLinkedListNode() {
+    }
+
+    XORLinkedListNode(XORLinkedListNode prev, XORLinkedListNode next) {
+        npx = new XORLinkedListNode();
     }
 }

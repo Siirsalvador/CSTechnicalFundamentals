@@ -41,7 +41,8 @@ public class Movie implements Comparable<Movie> {
      */
     @Override
     public int compareTo(Movie movie) {
-        return movie.year - this.year;
+        int sameYear = this.year - movie.year;
+        return sameYear == 0 ? movie.name.compareTo(this.name) : sameYear;
     }
 }
 
@@ -68,6 +69,7 @@ class Solution {
 
         ArrayList<Movie> list = new ArrayList<Movie>();
         list.add(new Movie(2017, "Avengers"));
+        list.add(new Movie(2017, "If We Live"));
         list.add(new Movie(2019, "Reasons Why"));
         list.add(new Movie(1977, "Rambo"));
         list.add(new Movie(2019, "Avengers"));

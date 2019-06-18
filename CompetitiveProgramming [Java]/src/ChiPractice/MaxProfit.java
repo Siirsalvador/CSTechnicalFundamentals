@@ -3,6 +3,7 @@ package ChiPractice;
 public class MaxProfit {
 
     public static void main(String[] args) {
+
         int[] stocks = new int[]{2, 7, 5, 6, 1, 10, 5};
 
         int maxProfit = findMaxProfit(stocks);

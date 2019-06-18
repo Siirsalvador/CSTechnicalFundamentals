@@ -1,22 +1,22 @@
 package DataStructures.LinkedList.SinglyLinkedList;
 
-public class LinkedListDS {
+public class SinglyLinkedList {
     Node head;
 
     /**
-     * @param linkedListDS
+     * @param singlyLinkedList
      * @param data
      * @return the updated LinkedList
      * This function inserts new node at the end of the LinkedList
      */
-    public static LinkedListDS insert(LinkedListDS linkedListDS, int data) {
+    public static SinglyLinkedList insert(SinglyLinkedList singlyLinkedList, int data) {
         Node newNode = new Node(data);
         newNode.next = null;
 
-        if (linkedListDS.head == null) {
-            linkedListDS.head = newNode;
+        if (singlyLinkedList.head == null) {
+            singlyLinkedList.head = newNode;
         } else {
-            Node lastItem = linkedListDS.head;
+            Node lastItem = singlyLinkedList.head;
             while (lastItem.next != null) {
                 lastItem = lastItem.next;
             }
@@ -28,27 +28,27 @@ public class LinkedListDS {
          * What put me at ease was understanding that even if I create a new Node object to be equal to a node in the linkedlist,
          * they still contain the same reference.
          */
-        return linkedListDS;
+        return singlyLinkedList;
     }
 
     /**
-     * @param linkedListDS
+     * @param singlyLinkedList
      * @param data
      * @return the update LinkedList with a new node at its head
      */
-    public static LinkedListDS push(LinkedListDS linkedListDS, int data) {
+    public static SinglyLinkedList push(SinglyLinkedList singlyLinkedList, int data) {
 
-        Node headNode = linkedListDS.head;
+        Node headNode = singlyLinkedList.head;
         if (headNode == null) {
-            linkedListDS.head = new Node(data);
-            return linkedListDS;
+            singlyLinkedList.head = new Node(data);
+            return singlyLinkedList;
         }
 
         Node currentNode = new Node(data);
         currentNode.next = headNode;
-        linkedListDS.head = currentNode;
+        singlyLinkedList.head = currentNode;
 
-        return linkedListDS;
+        return singlyLinkedList;
     }
 
     /**
@@ -68,8 +68,8 @@ public class LinkedListDS {
 
     }
 
-    public static LinkedListDS deleteByKey(LinkedListDS linkedListDS, int key) {
-        Node headNode = linkedListDS.head;
+    public static SinglyLinkedList deleteByKey(SinglyLinkedList singlyLinkedList, int key) {
+        Node headNode = singlyLinkedList.head;
         Node previousNode = null;
 
         /**
@@ -77,8 +77,8 @@ public class LinkedListDS {
          * If head node itself holds the key to be deleted
          */
         if (headNode != null && headNode.data == key) {
-            linkedListDS.head = headNode.next;
-            return linkedListDS;
+            singlyLinkedList.head = headNode.next;
+            return singlyLinkedList;
         }
 
         /**
@@ -102,18 +102,18 @@ public class LinkedListDS {
             System.out.println("The key was not found");
         }
 
-        return linkedListDS;
+        return singlyLinkedList;
 
     }
 
-    public static LinkedListDS deleteByIndex(LinkedListDS linkedListDS, int index) {
+    public static SinglyLinkedList deleteByIndex(SinglyLinkedList singlyLinkedList, int index) {
 
-        Node headNode = linkedListDS.head;
+        Node headNode = singlyLinkedList.head;
         Node previousNode = null;
 
         if (headNode != null && index == 0) {
-            linkedListDS.head = headNode.next;
-            return linkedListDS;
+            singlyLinkedList.head = headNode.next;
+            return singlyLinkedList;
         }
 
         Node currentNode = headNode;
@@ -133,11 +133,11 @@ public class LinkedListDS {
             System.out.println("Index not found");
         }
 
-        return linkedListDS;
+        return singlyLinkedList;
     }
 
-    public static void printLinkedList(LinkedListDS linkedListDS) {
-        Node headNode = linkedListDS.head;
+    public static void printLinkedList(SinglyLinkedList singlyLinkedList) {
+        Node headNode = singlyLinkedList.head;
 
         System.out.print("LinkedList: ");
 
@@ -151,16 +151,25 @@ public class LinkedListDS {
     }
 
     public static void main(String[] args) {
-        LinkedListDS linkedListDS = new LinkedListDS();
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
 
         Node headNode = new Node(5);
         headNode.next = null;
 
-        linkedListDS.head = headNode;
-        insert(linkedListDS, 13);
-        insert(linkedListDS, 12);
+        singlyLinkedList.head = headNode;
+        insert(singlyLinkedList, 13);
+        insert(singlyLinkedList, 12);
 
-        printLinkedList(linkedListDS);
+        printLinkedList(singlyLinkedList);
 
+    }
+}
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
     }
 }
