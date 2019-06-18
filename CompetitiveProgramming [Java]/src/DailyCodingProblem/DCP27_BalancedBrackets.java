@@ -23,19 +23,23 @@ public class DCP27_BalancedBrackets {
         String startBrackets = "([{";
         boolean matchingResult = false;
 
-        char[] bracketArray = bracketCombos.toCharArray();
+        char[] bracketArr = bracketCombos.toCharArray();
         Stack<Character> bracketStack = new Stack<>();
 
-        for (int i = 0; i < bracketArray.length; i++) {
+        for (int i = 0; i < bracketArr.length; i++) {
 
-            if (startBrackets.contains(String.valueOf(bracketArray[i]))) {
-                bracketStack.push(bracketArray[i]);
+            if (startBrackets.contains(String.valueOf(bracketArr[i]))) {
+
+                bracketStack.push(bracketArr[i]);
+
             } else {
+
                 if (bracketStack.empty()) {
                     return "NO";
                 }
+
                 char currentCharacter = bracketStack.pop();
-                matchingResult = checkThatClosingAndOpeningBracketMatch(bracketArray[i], currentCharacter);
+                matchingResult = checkThatClosingAndOpeningBracketMatch(bracketArr[i], currentCharacter);
 
                 if (!matchingResult)
                     return "NO";

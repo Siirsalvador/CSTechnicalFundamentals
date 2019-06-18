@@ -1,24 +1,24 @@
 package DataStructures.LinkedList.DoublyLinkedList;
 
-public class DoublyLinkedListDS {
+public class DoublyLinkedList {
     private DoublyLinkedListNode head;
 
-    private static void push(DoublyLinkedListDS doublyLinkedListDS, int data) {
+    private static void push(DoublyLinkedList doublyLinkedList, int data) {
 
-        DoublyLinkedListNode headNode = doublyLinkedListDS.head;
+        DoublyLinkedListNode headNode = doublyLinkedList.head;
         if (headNode == null) {
-            doublyLinkedListDS.head = new DoublyLinkedListNode(data);
-            doublyLinkedListDS.head.nextNode = null;
-            doublyLinkedListDS.head.previousNode = null;
+            doublyLinkedList.head = new DoublyLinkedListNode(data);
+            doublyLinkedList.head.nextNode = null;
+            doublyLinkedList.head.previousNode = null;
             return;
         }
 
-        headNode = doublyLinkedListDS.head;
+        headNode = doublyLinkedList.head;
 
         DoublyLinkedListNode newNode = new DoublyLinkedListNode(data);
         headNode.previousNode = newNode;
         newNode.nextNode = headNode;
-        doublyLinkedListDS.head = newNode;
+        doublyLinkedList.head = newNode;
     }
 
     private static void insertAfter(DoublyLinkedListNode nodeToInsertAfter, int data) {
@@ -35,10 +35,10 @@ public class DoublyLinkedListDS {
 
     }
 
-    private static void append(DoublyLinkedListDS doublyLinkedListDS, int data) {
-        DoublyLinkedListNode headNode = doublyLinkedListDS.head;
+    private static void append(DoublyLinkedList doublyLinkedList, int data) {
+        DoublyLinkedListNode headNode = doublyLinkedList.head;
         if (headNode == null) {
-            doublyLinkedListDS.head = new DoublyLinkedListNode(data);
+            doublyLinkedList.head = new DoublyLinkedListNode(data);
             return;
         }
 
@@ -72,45 +72,45 @@ public class DoublyLinkedListDS {
     }
 
     public static void main(String[] args) {
-        DoublyLinkedListDS doublyLinkedListDS = new DoublyLinkedListDS();
-        doublyLinkedListDS.head = new DoublyLinkedListNode(10);
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.head = new DoublyLinkedListNode(10);
 
-        DoublyLinkedListNode eachNode = doublyLinkedListDS.head;
+        DoublyLinkedListNode eachNode = doublyLinkedList.head;
         while (eachNode != null) {
             System.out.println(eachNode.data);
             eachNode = eachNode.nextNode;
         }
 
-        push(doublyLinkedListDS, 12);
+        push(doublyLinkedList, 12);
 
-        eachNode = doublyLinkedListDS.head;
+        eachNode = doublyLinkedList.head;
         while (eachNode != null) {
             System.out.print(eachNode.data + " ");
             eachNode = eachNode.nextNode;
         }
         System.out.println();
 
-        insertAfter(doublyLinkedListDS.head.nextNode, 25);
+        insertAfter(doublyLinkedList.head.nextNode, 25);
 
-        eachNode = doublyLinkedListDS.head;
+        eachNode = doublyLinkedList.head;
         while (eachNode != null) {
             System.out.print(eachNode.data + " ");
             eachNode = eachNode.nextNode;
         }
         System.out.println();
 
-        append(doublyLinkedListDS, 3500);
+        append(doublyLinkedList, 3500);
 
-        eachNode = doublyLinkedListDS.head;
+        eachNode = doublyLinkedList.head;
         while (eachNode != null) {
             System.out.print(eachNode.data + " ");
             eachNode = eachNode.nextNode;
         }
         System.out.println();
 
-        deleteNode(doublyLinkedListDS.head, doublyLinkedListDS.head.nextNode.nextNode);
+        deleteNode(doublyLinkedList.head, doublyLinkedList.head.nextNode.nextNode);
 
-        eachNode = doublyLinkedListDS.head;
+        eachNode = doublyLinkedList.head;
         while (eachNode != null) {
             System.out.print(eachNode.data + " ");
             eachNode = eachNode.nextNode;
@@ -118,3 +118,14 @@ public class DoublyLinkedListDS {
         System.out.println();
     }
 }
+
+class DoublyLinkedListNode {
+    int data;
+    DoublyLinkedListNode nextNode;
+    DoublyLinkedListNode previousNode;
+
+    DoublyLinkedListNode(int d) {
+        data = d;
+    }
+}
+
