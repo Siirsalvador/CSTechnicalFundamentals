@@ -23,7 +23,6 @@ public class Library {
         Library library = new Library();
         library.printPopularAuthors(books);
 
-
     }
 
     private void printPopularAuthors(List<Book> books) {

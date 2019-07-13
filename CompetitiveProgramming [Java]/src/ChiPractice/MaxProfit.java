@@ -2,29 +2,35 @@ package ChiPractice;
 
 public class MaxProfit {
 
+    MaxProfit() {
+
+    }
+
     public static void main(String[] args) {
+
+        MaxProfit maxProfitObj = new MaxProfit();
 
         int[] stocks = new int[]{2, 7, 5, 6, 1, 10, 5};
 
-        int maxProfit = findMaxProfit(stocks);
+        int maxProfit = maxProfitObj.findMaxProfit(stocks);
         System.out.println(maxProfit);
 
         stocks = new int[]{5, 7, 19, 2, 17, 1, 10};
 
-        maxProfit = findMaxProfit(stocks);
+        maxProfit = maxProfitObj.findMaxProfit(stocks);
         System.out.println(maxProfit);
     }
 
-    private static int findMaxProfit(int[] stocks) {
+    int findMaxProfit(int[] stocks) {
 
-        if(stocks.length < 2)
+        if (stocks.length < 2)
             throw new IllegalArgumentException("No profit available, prices didn't change");
 
         int buy = stocks[0];
         int sell = stocks[1];
         int profit = sell - buy;
 
-        if(stocks.length == 2)
+        if (stocks.length == 2)
             return profit;
 
 
@@ -48,5 +54,4 @@ public class MaxProfit {
 
         return profit;
     }
-
 }
