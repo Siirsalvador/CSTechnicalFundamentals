@@ -64,19 +64,27 @@ public class CandyCrush {
         return crushTheDamnCandy(linkedList);
     }
 
+
+    // 1, 2, 3, 3, 4, 4, 2, 2
+    // 1 2 3 3 4
+
+    // {1,1,2,3,3,3}
+
+    //{2,3,3,3}
     private LinkedList<Integer> crushTheDamnCandy(@NotNull LinkedList<Integer> linkedList) {
 
         boolean crushed = false;
 
-        int compareFrom = 0;
+        int compareFrom = 0; // idx = 1, val = 3
         int compareTo = 0;
 
-        for (int i = 1; i < linkedList.size(); i++) {
+        for (int i = 1; i < linkedList.size(); i++) { // currI = 3, currVal = 3
 
             Integer currentValue = linkedList.get(i);
 
+            //      3 compareTo 3
             if (linkedList.get(compareFrom).equals(currentValue)) {
-                compareTo = i;
+                compareTo = i; // 3
                 crushed = true;
 
                 if (i == linkedList.size() - 1) {
@@ -88,13 +96,15 @@ public class CandyCrush {
 
             } else {
 
+                // I didn't find any duplicates
                 if (compareTo == 0) {
-                    compareFrom = i;
+                    compareFrom = i; // 1
                     continue;
                 }
 
+                // I found duplicates, I want to delete them because I have found a diff val
                 while (compareTo >= compareFrom) {
-                    linkedList.remove(compareTo);
+                    linkedList.remove(compareTo); //{2,3,3,3}
                     compareTo--;
                 }
 
@@ -102,35 +112,42 @@ public class CandyCrush {
             }
         }
 
+
         return crushed ? crushTheDamnCandy(linkedList) : linkedList;
     }
 
 }
 
-class ListNode extends LinkedList {
+class LinkedListCustom extends LinkedList{
 
-    private int value;
-    private ListNode next;
+    class ListNode extends LinkedList {
 
-    ListNode(int value) {
-        this.value = value;
-    }
+        private int value;
+        private ListNode next;
 
-    public int getValue() {
-        return value;
-    }
+        ListNode(int value) {
+            this.value = value;
+        }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+        public int getValue() {
+            return value;
+        }
 
-    public ListNode getNext() {
-        return next;
-    }
+        public void setValue(int value) {
+            this.value = value;
+        }
 
-    public void setNext(ListNode next) {
-        this.next = next;
+        public ListNode getNext() {
+            return next;
+        }
+
+        public void setNext(ListNode next) {
+            this.next = next;
+        }
+
     }
 
 }
+
+
 

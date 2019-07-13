@@ -18,24 +18,20 @@ public class Leaderboard {
     public static void main(String[] args) {
 
         HashMap<String, LinkedList<Integer>> athletesToMarkerPostions = new HashMap<>();
-
         String[] currentPositionArr = {"Ayomide", "Chinemerem", "Patricia", "Thanos", "Wande", "Tiger", "NeverExperred"};
 
-        athletesToMarkerPostions = updatePlayerPosition(currentPositionArr, athletesToMarkerPostions);
-
+        updatePlayerPosition(currentPositionArr, athletesToMarkerPostions);
         System.out.println(athletesToMarkerPostions.entrySet());
 
         currentPositionArr = new String[]{"NeverExperred", "Chinemerem", "Ayomide", "Patricia", "Thanos", "Wande", "Tiger"};
-
-        athletesToMarkerPostions = updatePlayerPosition(currentPositionArr, athletesToMarkerPostions);
+        updatePlayerPosition(currentPositionArr, athletesToMarkerPostions);
 
         checkIfLeaderboardChanged("Ayomide", athletesToMarkerPostions, 1, 2);
-
         System.out.println(athletesToMarkerPostions.entrySet());
 
     }
 
-    private static HashMap<String, LinkedList<Integer>> updatePlayerPosition(String[] playerMarkerPositionArr,
+    static HashMap<String, LinkedList<Integer>> updatePlayerPosition(String[] playerMarkerPositionArr,
                                                                              HashMap<String, LinkedList<Integer>> athletesToMarkerPostions) {
 
         for (int i = 0; i < playerMarkerPositionArr.length; i++) {

@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class MinHeapDS {
 
     /**
-     * Best way to implement it is with ab array
+     * Best way to implement it is with an array
      */
     private int capacity = 10;
-    int[] items = new int[capacity];
+    private int[] items = new int[capacity];
     private int size = 0;
 
     public static void main(String[] args) {
