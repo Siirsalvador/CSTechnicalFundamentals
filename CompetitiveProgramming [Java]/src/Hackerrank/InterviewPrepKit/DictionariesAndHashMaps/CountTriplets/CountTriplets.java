@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  */
 public class CountTriplets {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -34,7 +34,7 @@ public class CountTriplets {
 
     }
 
-    static long countTriplets(List<Long> listOfNumbers, long ratio) throws FileNotFoundException {
+    static long countTriplets(List<Long> listOfNumbers, long ratio) {
 
         HashMap<Long, Long> countMap = new HashMap<>();
         HashMap<Long, Long> tripletMap = new HashMap<>();
