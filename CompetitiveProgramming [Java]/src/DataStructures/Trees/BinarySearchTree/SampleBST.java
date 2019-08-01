@@ -1,9 +1,6 @@
 package DataStructures.Trees.BinarySearchTree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -16,109 +13,6 @@ class Node {
 
     Node(int data) {
         this.data = data;
-    }
-
-    void insert(int value) {
-        if (value <= data) {
-
-            if (left == null) {
-                left = new Node(value);
-            } else {
-                left.insert(value);
-            }
-
-        } else {
-
-            if (right == null) {
-                right = new Node(value);
-            } else {
-                right.insert(value);
-            }
-
-        }
-    }
-
-    private boolean contains(int value) {
-
-        if (value == data) {
-            return true;
-        } else {
-            if (value < data) {
-
-                if (left == null) {
-                    return false;
-                } else {
-                    return left.contains(value);
-                }
-
-            } else {
-
-                if (right == null) {
-                    return false;
-                } else {
-                    return right.contains(value);
-                }
-
-            }
-        }
-    }
-
-    private Node lca(Node root, int v1, int v2) {
-
-        if (v2 < v1) {
-            int temp = v1;
-            v1 = v2;
-            v2 = temp;
-        }
-
-        if (v2 < root.data) {
-            //left
-            return lca(root.left, v1, v2);
-        } else if (v1 > root.data) {
-            //right
-            return lca(root.right, v1, v2);
-        } else {
-            return root;
-        }
-
-    }
-
-    private int height() {
-
-        // Recursion:
-        // Step 1:  Don't think too much
-        // Step 2:  Know that every recursive function will have two sections:
-        //  Base Condition
-        // Recursive Section
-
-        int leftHeight = 0;
-        int rightHeight = 0;
-
-        if (left == null && right == null) {
-            return 0;
-        }
-
-        if (left != null) {
-            leftHeight = 1 + left.height();
-        }
-
-        if (right != null) {
-            rightHeight = 1 + right.height();
-        }
-
-        return Math.max(leftHeight, rightHeight);
-    }
-
-    private void printInOrder() {
-        if (left != null) {
-            left.printInOrder();
-        }
-
-        System.out.println(data);
-
-        if (right != null) {
-            right.printInOrder();
-        }
     }
 
     @Override
@@ -145,15 +39,121 @@ class Node {
 public class SampleBST {
 
     public static void main(String[] args) {
-        Node node = new Node(4);
-        node.insert(2);
-        node.insert(3);
-        node.insert(1);
-        node.insert(7);
-        node.insert(6);
 
         SampleBST bst = new SampleBST();
-        System.out.println(bst.lca2(node, 1, 7).toString());
+        Node node = new Node(4);
+        bst.insert(node, 2);
+        bst.insert(node, 3);
+        bst.insert(node, 1);
+        bst.insert(node, 7);
+        bst.insert(node, 6);
+
+    }
+
+    private void insert(Node root, int value) {
+        if (value <= root.data) {
+
+            if (root.left == null) {
+                root.left = new Node(value);
+            } else {
+                insert(root.left, value);
+            }
+
+        } else {
+
+            if (root.right == null) {
+                root.right = new Node(value);
+            } else {
+                insert(root.right, value);
+            }
+
+        }
+    }
+
+    private int height(Node root) {
+
+        // Recursion:
+        // Step 1:  Don't think too much
+        // Step 2:  Know that every recursive function will have two sections:
+        //  Base Condition
+        // Recursive Section
+
+        int leftHeight = 0;
+        int rightHeight = 0;
+
+        if (root.left == null && root.right == null) {
+            return 0;
+        }
+
+        if (root.left != null) {
+            leftHeight = 1 + height(root.left);
+        }
+
+        if (root.right != null) {
+            rightHeight = 1 + height(root.right);
+        }
+
+        return Math.max(leftHeight, rightHeight);
+    }
+
+    private boolean contains(Node root, int value) {
+
+        if (value == root.data) {
+            return true;
+        } else {
+            if (value < root.data) {
+
+                if (root.left == null) {
+                    return false;
+                } else {
+                    return contains(root.left, value);
+                }
+
+            } else {
+
+                if (root.right == null) {
+                    return false;
+                } else {
+                    return contains(root.right, value);
+                }
+
+            }
+        }
+    }
+
+    private void printInOrder(Node root) {
+        if (root.left != null) {
+            printInOrder(root.left);
+        }
+
+        System.out.println(root.data);
+
+        if (root.right != null) {
+            printInOrder(root.right);
+        }
+    }
+
+    private Node lca(Node root, int v1, int v2) {
+
+        if (v2 < v1) {
+            int temp = v1;
+            v1 = v2;
+            v2 = temp;
+        }
+
+        /**
+         * Time Complexity of O(logn)
+         */
+        if (v2 < root.data) {
+            //left
+            return lca(root.left, v1, v2);
+        } else if (v1 > root.data) {
+            //right
+            return lca(root.right, v1, v2);
+        } else {
+            return root;
+        }
+
     }
 
     /**
@@ -217,6 +217,29 @@ public class SampleBST {
             }
         }
     }
+
+    private boolean checkBST(Node root) {
+
+        ArrayList<Integer> nodesInOrder = new ArrayList<>();
+        inorder(root, nodesInOrder);
+
+        Set<Integer> uniqueNodes = new HashSet<>(nodesInOrder);
+        ArrayList<Integer> uniqueNodeList = new ArrayList<>(uniqueNodes);
+        Collections.sort(uniqueNodeList);
+
+        return uniqueNodeList == nodesInOrder;
+    }
+
+    private void inorder(Node root, ArrayList<Integer> nodesInOrder) {
+
+        if (root == null)
+            return;
+
+        inorder(root.left, nodesInOrder);
+        nodesInOrder.add(root.data);
+        inorder(root.right, nodesInOrder);
+    }
+
 }
 
 
