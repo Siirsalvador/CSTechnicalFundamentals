@@ -8,39 +8,39 @@ import java.util.ArrayList;
  */
 public class SampleStack {
 
-    //Push
-    //Pop
-    //Retrieve Min Element in Constant time
+    private int min;
+    private ArrayList<Integer> arrayList;
+    private ArrayList<Integer> minList;
 
-    int min;
-    int size;
-    ArrayList<Integer> arrayList;
-
-    SampleStack(){
+    SampleStack() {
         this.min = Integer.MAX_VALUE;
-        this.size = 0;
         this.arrayList = new ArrayList<>();
+        this.minList = new ArrayList<>();
     }
 
-    void push(int num){
+    void push(int num) {
 
-        if(num < min){
+        if (num <= min) {
             min = num;
+            minList.add(min);
         }
 
         arrayList.add(num);
-        size++;
     }
 
-    int pop(){
-      int num = arrayList.get(size - 1);
-      arrayList.remove(size - 1);
-      size--;
+    int pop() {
 
-      return num;
+        int num = arrayList.get(arrayList.size() - 1);
+        arrayList.remove(arrayList.size() - 1);
+
+        if (num == min) {
+            minList.remove(minList.size() - 1);
+        }
+
+        return num;
     }
 
-    int getMin(){
-        return min;
+    int getMin() {
+        return minList.size() - 1;
     }
 }
