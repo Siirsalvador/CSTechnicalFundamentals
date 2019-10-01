@@ -33,4 +33,7 @@ public class FindMiddleNodeInSinglePass {
 
         return slow;
     }
+
+    public static void main(String[] args){}
+
 }
