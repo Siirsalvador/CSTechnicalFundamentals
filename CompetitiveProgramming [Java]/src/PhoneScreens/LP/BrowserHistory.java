@@ -1,7 +1,7 @@
 package PhoneScreens.LP;
 
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Question
@@ -9,78 +9,57 @@ import java.util.ArrayList;
 
 class BrowserHistory {
 
-    private ArrayList<String> listOfUrls;
-    private int HighestKey = 0;
-
-    BrowserHistory(ArrayList<String> arrayList) {
-        this.listOfUrls = arrayList;
-    }
+    private LinkedList<WebPage> webPages;
 
     BrowserHistory() {
-        this.listOfUrls = new ArrayList<String>();
+        this.webPages = new LinkedList<>();
     }
-
-
-    // hashmap -> O(1)
-    // does not keep the order
-
-
-    // linkedlist ->  bbc <-> cnn <-> bbg
-    // time = 0
-    // { "bbc": *bbc, "cnn": *cnn, "bbg": *bbg}
-    // bbc
-    // { "bbc": *bbc, "cnn": *cnn, "bbg": *bbg}
-    // cnn <-> bbg <-> bbc
-
-    private void addUrlToArrayList(ArrayList<String> arrayList, String url) {
-        // find O(N) -> O(1) ? hashmap, hashset
-        // remove O(N) -> O(1) ? hashmap, hashset
-        //      [1 2 3 4 5 6]
-        //      remove 1
-        //      [1 2 3 4 5 6]
-        //       ^
-        //      [2 3 4 5 6]
-        // append O(1)
-        arrayList.add(url);
-    }
-
-    // extract the keys -> O(N)
-    // sort them according value {K -> V} O(N logN)
-    // print
-    // cnn <-> bbg <-> bbc O(N)
-
-    //Multithreading - Concurrency? - Split data to prevent deadlocks
 
     private void printUrlsInChronologicalOrder() {
-        int lengthOfList = this.listOfUrls.size();
-
-        for (int i = listOfUrls.size() - 1; i == 0; i--) {
-            System.out.println(listOfUrls.get(i));
+        int size = webPages.size();
+        for (int i = size - 1; i >= 0; i--) {
+            System.out.println(webPages.get(i).url);
         }
     }
 
-    protected void visit(String url) {
-        this.listOfUrls.add(url);
+    void visit(String url) {
+        for (WebPage page : webPages) {
+            if (page.url.equals(url)) {
+                if (page.prev != null && page.next != null) page.prev.next = page.next;
+                if (page.prev == null) page.next.prev = null;
+            }
+        }
+
+        webPages.getLast().next = new WebPage(url);
+
     }
 
-    protected void print() {
+    void print() {
         this.printUrlsInChronologicalOrder();
+    }
+
+    class WebPage {
+        String url;
+        WebPage prev;
+        WebPage next;
+
+        WebPage(String url) {
+            this.url = url;
+        }
     }
 }
 
 class Solution {
     public static void main(String args[]) throws Exception {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
         BrowserHistory hist = new BrowserHistory();
         hist.visit("bbc");
         hist.visit("cnn");
-        hist.print(); // print to stdout -> "cnn -> bbc"
+        hist.print();
 
         BrowserHistory hist2 = new BrowserHistory();
         hist.visit("abc");
         hist.visit("cde");
-        hist.print(); // print to stdout -> "cde -> abc"
+        hist.print();
     }
 
-    // Decide quickly
 }

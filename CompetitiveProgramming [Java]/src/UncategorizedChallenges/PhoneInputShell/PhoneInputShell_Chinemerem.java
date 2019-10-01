@@ -61,7 +61,6 @@ public class PhoneInputShell_Chinemerem {
     }
 
     private static void initMap() {
-
         PhoneInputShell_Ayo.inputValuesIntoMap(map);
     }
 

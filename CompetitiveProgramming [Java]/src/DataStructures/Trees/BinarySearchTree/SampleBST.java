@@ -173,7 +173,7 @@ public class SampleBST {
         List<Integer> v2Nodes = new ArrayList<>();
         getAllNodes(v2Nodes, root, v2);
 
-        if (v1Nodes.size() > v2Nodes.size()) {
+        if (v1Nodes.size() < v2Nodes.size()) {
             List<Integer> temp = v1Nodes;
             v1Nodes = v2Nodes;
             v2Nodes = temp;
@@ -189,7 +189,6 @@ public class SampleBST {
     }
 
     private List<Integer> getAllNodes(List<Integer> listOfTraversedNodes, Node root, int value) {
-
 
         if (root.data == value) {
             listOfTraversedNodes.add(root.data);
