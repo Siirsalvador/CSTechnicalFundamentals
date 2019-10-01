@@ -1,6 +1,7 @@
 package ChiPractice.GS;
 
 import java.util.Random;
+import java.util.Stack;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -8,10 +9,17 @@ import java.util.Random;
  */
 public class RandomBtw1and7 {
 
-    private Random random = new Random();
+    private static Random random = new Random();
 
-    int getRandom() {
+    private static int getRandom() {
         int randomNumber = random.nextInt(7);
         return randomNumber + 1;
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(getRandom());
+        }
+
     }
 }

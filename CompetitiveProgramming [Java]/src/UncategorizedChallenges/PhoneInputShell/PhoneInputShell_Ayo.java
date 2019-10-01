@@ -13,13 +13,13 @@ public class PhoneInputShell_Ayo {
         initializeMap();
 
         if (mapOfNumbers.size() < 1) {
-            new IllegalArgumentException("Map is empty: " + mapOfNumbers.size());
+            throw new IllegalArgumentException("Map is empty: " + mapOfNumbers.size());
         }
 
         String[] numbers = {"3", "6", "6", "3"};
-        ArrayList<String> actualWordStore = new ArrayList();
+        ArrayList<String> actualWordStore = new ArrayList<>();
         actualWordStore.add("");
-        ArrayList<String> tempWordStore = new ArrayList();
+        ArrayList<String> tempWordStore = new ArrayList<>();
 
 
         for (String aNumber : numbers) {
@@ -31,10 +31,10 @@ public class PhoneInputShell_Ayo {
 
             StringBuilder currentWord = new StringBuilder();
 
-            for (int i = 0; i < actualWordStore.size(); i++) {
+            for (String s : actualWordStore) {
                 for (int j = 0; j < numLetters.length(); j++) {
-                    currentWord.append(actualWordStore.get(i));
-                    currentWord.append(String.valueOf(numLetters.charAt(j)));
+                    currentWord.append(s);
+                    currentWord.append(numLetters.charAt(j));
                     tempWordStore.add(String.valueOf(currentWord));
                     currentWord = new StringBuilder();
                 }

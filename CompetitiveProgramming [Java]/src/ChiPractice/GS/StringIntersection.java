@@ -30,9 +30,9 @@ public class StringIntersection {
 
             Character curr = a.charAt(i);
 
-            if (stringToCount.containsKey(curr)) {
+            if (stringToCount.containsKey(curr) && stringToCount.get(curr) > 0) {
                 builder.append(curr);
-                reduceCount(stringToCount, curr);
+                stringToCount.replace(curr, stringToCount.get(curr) - 1);
             }
 
         }
@@ -40,33 +40,21 @@ public class StringIntersection {
         return builder.toString();
     }
 
-    //N squared
-    public String getIntersectionInOrderOfANSquare(String a, String b) {
+    //N squared by Chinemerem
+    public String getIntersectionNSq(String s1, String s2) {
 
-        StringBuilder builder = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
+        for (char c : s1.toCharArray()) {
+            int idx = s2.indexOf(c);
 
-        for (int i = 0; i < a.length(); i++) {
-
-            char curr = a.charAt(i);
-
-            for (int j = 0; j < b.length(); j++) {
-
-                if (curr == b.charAt(j)) {
-                    builder.append(curr);
-                }
+            if (idx >= 0) {
+                sb.append(c);
+                s2 = idx == s2.length() - 1 ? s2.substring(0, idx)
+                        : s2.substring(0, idx) + s2.substring(idx + 1);
             }
+
         }
 
-        return builder.toString();
-    }
-
-
-    private void reduceCount(HashMap<Character, Integer> stringToCount, Character curr) {
-
-        if (stringToCount.get(curr) - 1 == 0) {
-            stringToCount.remove(curr);
-        } else {
-            stringToCount.put(curr, stringToCount.get(curr) - 1);
-        }
+        return sb.toString();
     }
 }
