@@ -63,18 +63,33 @@ public class DecompressTree {
         return root;
     }
 
-    public static TreeNode decompressTree(String[] nodes, int index) {
-        if (index >= nodes.length) return null;
-        if (nodes[index].equals("*")) return null;
-        TreeNode root = new TreeNode(Integer.valueOf(nodes[index]));
-        root.left = decompressTree(nodes, index * 2 + 1);
-        root.right = decompressTree(nodes, index * 2 + 2);
+    public static TreeNode decompressTreeAttempt2(String str) {
+        if (str == null || str.isEmpty() || str.charAt(0) == '*') return null;
+
+        String[] strArr = str.split(",");
+
+        Queue<TreeNode> allNodes = new LinkedList<>();
+        for (String aStr : strArr) {
+            if (aStr.equals("*")) allNodes.add(null);
+            else allNodes.add(new TreeNode(Integer.parseInt(aStr)));
+        }
+
+        Queue<TreeNode> currLevel = new LinkedList<>();
+        TreeNode root = allNodes.poll();
+        currLevel.add(root);
+
+        while (!allNodes.isEmpty()) {
+            TreeNode curr = currLevel.poll();
+            if (curr == null) continue;
+
+            curr.left = allNodes.poll();
+            curr.right = allNodes.poll();
+
+            currLevel.add(curr.left);
+            currLevel.add(curr.right);
+        }
 
         return root;
-    }
-
-    public static TreeNode decompressTreeHeap(String str) {
-        return decompressTree(str.split(","), 0);
     }
 
     public static void main(String[] args) {

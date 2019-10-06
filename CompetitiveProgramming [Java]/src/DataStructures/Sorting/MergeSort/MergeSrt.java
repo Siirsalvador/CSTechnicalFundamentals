@@ -29,26 +29,26 @@ public class MergeSrt {
         }
     }
 
-    private static void mergeHalves(int[] array, int[] temp, int leftStart, int rightEnd) {
+    private static void mergeHalves(int[] array, int[] temp, int start, int end) {
 
-        int leftEnd = (leftStart + rightEnd) / 2;
-        int rightStart = leftEnd + 1;
+        int middle = (start + end) / 2;
+        int secArrIdx = middle + 1;
 
-        int size = (rightEnd - leftStart) + 1;
+        int size = (end - start) + 1;
 
-        int leftIdx = leftStart;
-        int rightIdx = rightStart;
+        int leftIdx = start;
+        int rightIdx = secArrIdx;
 
-        int tempIdx = leftStart;
+        int tempIdx = start;
 
-        while (leftIdx <= leftEnd && rightIdx <= rightEnd) {
+        while (leftIdx <= middle && rightIdx <= end) {
 
             if (array[leftIdx] <= array[rightIdx]) {
                 temp[tempIdx] = array[leftIdx];
                 leftIdx++;
             } else {
 
-                swaps += rightStart - leftIdx;
+                swaps += secArrIdx - leftIdx;
 
                 temp[tempIdx] = array[rightIdx];
                 rightIdx++;
@@ -58,10 +58,10 @@ public class MergeSrt {
         }
 
         //Only one will take effect
-        System.arraycopy(array, leftIdx, temp, tempIdx, (leftEnd - leftIdx) + 1);
-        System.arraycopy(array, rightIdx, temp, tempIdx, (rightEnd - rightIdx) + 1);
+        System.arraycopy(array, leftIdx, temp, tempIdx, (middle - leftIdx) + 1);
+        System.arraycopy(array, rightIdx, temp, tempIdx, (end - rightIdx) + 1);
 
-        System.arraycopy(temp, leftStart, array, leftStart, size);
+        System.arraycopy(temp, start, array, start, size);
 
 
     }

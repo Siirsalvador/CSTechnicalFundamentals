@@ -1,4 +1,4 @@
-package Firecode;
+package Firecode.MinSumPathInTriangle;
 
 import java.util.ArrayList;
 
@@ -13,13 +13,41 @@ public class MinSumPathInTriangle {
         //when we get to max rows, we bounce
 
         int[] buffer = new int[input.size()];
+        int n = input.size() - 1;
 
         for (int i = 0; i < buffer.length; i++) {
-            buffer[i] = input.get(input.size() - 1).get(i);
+            buffer[i] = input.get(n).get(i);
         }
 
+        for (int i = input.size() - 2; i >= 0; i--) {
+            for (int j = 0; j < input.get(i).size(); j++) {
+                buffer[j] = input.get(i).get(j) + Math.min(buffer[j], buffer[j + 1]);
+            }
+        }
 
-        return -1;
+        return buffer[0];
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<ArrayList<Integer>> input = new ArrayList<>();
+
+        ArrayList<Integer> input1 = new ArrayList<>();
+        input1.add(1);
+        input.add(input1);
+
+        input1 = new ArrayList<>();
+        input1.add(2);
+        input1.add(3);
+        input.add(input1);
+
+        input1 = new ArrayList<>();
+        input1.add(4);
+        input1.add(5);
+        input1.add(6);
+        input.add(input1);
+
+        System.out.println(minTriangleDepth(input));
     }
 
 }
