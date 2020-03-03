@@ -20,7 +20,7 @@ public class SubSetSummation {
         if (arr.length == 0) return false;
 
         int endIdx = arr.length - 1;
-        return groupSum(endIdx, arr, target - arr[endIdx]);
+        return groupSum(endIdx, arr, target);
     }
 
     private static boolean groupSum(int endIdx, int[] arr, int target) {
@@ -36,6 +36,12 @@ public class SubSetSummation {
     public static void main(String[] args) {
         int[] arr = {10, 3, 4, 6, 7};
         System.out.println(groupSum(arr, 7));
+
+        int[] arr2 = {1, 2, 3, 6, 5};
+        System.out.println(groupSum(arr2, 10));
+
+        int[] arr3 = {1, 2, 3, 6, 5};
+        System.out.println(groupSum(arr3, 18));
     }
 
 

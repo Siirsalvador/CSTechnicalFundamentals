@@ -3,8 +3,7 @@ package DataStructures.Map;
 import java.util.*;
 
 /**
- * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
- * @date: 2019-08-30
+ * @author: Chinemerem Enumah
  */
 public class BasicMap<K, V> {
 

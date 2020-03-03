@@ -27,10 +27,6 @@ public class RotateSquareImgCW {
         8 5 2
         9 6 3
 
-        3 6 9
-        2 5 8
-        1 4 7
-
         Transpose then vertical flip.
     */
 

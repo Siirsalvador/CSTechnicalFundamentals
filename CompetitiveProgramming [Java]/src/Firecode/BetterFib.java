@@ -20,4 +20,19 @@ public class BetterFib {
 
         return firstPrev + secondPrev;
     }
+
+    public static int fib(int n) {
+        if(n < 2) return n;
+
+        int prevNum = 0;
+        int currentNum = 1;
+
+        for(int i = 2; i <= n; i++){
+            int nextNum = currentNum + prevNum;
+            prevNum = currentNum;
+            currentNum = nextNum;
+        }
+
+        return currentNum;
+    }
 }

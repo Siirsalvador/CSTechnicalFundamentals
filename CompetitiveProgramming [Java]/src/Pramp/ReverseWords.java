@@ -53,7 +53,7 @@ public class ReverseWords {
             if (arr[i] == ' ' || i == arr.length - 1) {
                 endIdx = i == arr.length - 1 ? i : i - 1;
                 reverse(arr, startIdx, endIdx);
-                if (i + 1 < arr.length - 1) startIdx = i + 1;
+                if (i + 1 <= arr.length - 1) startIdx = i + 1;
             }
 
         }
@@ -70,12 +70,5 @@ public class ReverseWords {
             end--;
         }
     }
-
-    //['A', 'B', 'C'] ==> 0 -> 2 = 3 - 0 - 1
-//    for(int i = 0;i<arr.length/2;i++){
-//        char temp = arr[i];
-//        arr[i] = arr[arr.length - i - 1];
-//        arr[arr.length - i - 1] = temp;
-//    }
 
 }

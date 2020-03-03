@@ -1,7 +1,9 @@
 package Pramp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -10,16 +12,21 @@ import java.util.Comparator;
 public class AbsValueSort {
 
     private static int[] absSort(int[] arr) {
+
+        if (arr == null || arr.length == 0) return new int[1];
         // your code goes here
-        Integer[] numbers = new Integer[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            numbers[i] = arr[i];
+        List<Integer> numbers = new ArrayList<>();
+        for (int value : arr) {
+            numbers.add(value);
         }
 
-        Arrays.sort(numbers, new AbsoluteNumbers());
-        int[] result = new int[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            result[i] = numbers[i];
+        numbers.sort((numb, numb2) -> {
+            return Math.abs(numb) == Math.abs(numb2) ? numb - numb2 : Math.abs(numb) - Math.abs(numb2);
+        });
+
+        int[] result = new int[numbers.size()];
+        for (int i = 0; i < numbers.size(); i++) {
+            result[i] = numbers.get(i);
         }
 
         return result;
@@ -28,13 +35,6 @@ public class AbsValueSort {
     public static void main(String[] args) {
         int[] nums = {2, -7, -2, -2, 0};
         System.out.println(Arrays.toString(absSort(nums)));
-
-    }
-
-    static class AbsoluteNumbers implements Comparator<Integer> {
-        public int compare(Integer numb, Integer numb2) {
-            return Math.abs(numb) == Math.abs(numb2) ? numb - numb2 : Math.abs(numb) - Math.abs(numb2);
-        }
     }
 }
 
@@ -67,12 +67,7 @@ public class HelloWorld
 
   return arr;
 }
-  //[2, -2, -7]
-  //2 , -2 => 2 equalTo |-2| ==> -2, 2
-  //n2 bubble 1= 3>4 ?0:1;
-  //Custom Comparator
-  //my internet is very poor
-  //that's okay, we can communicate like this if that's fine
+
 }
 
 class AbsVal : IComparer<int>{

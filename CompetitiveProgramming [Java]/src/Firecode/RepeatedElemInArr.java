@@ -9,6 +9,9 @@ import java.util.ArrayList;
 public class RepeatedElemInArr {
     // java.util.* and java.util.streams.* have been imported for this problem.
 // You don't need any other imports.
+    public static void main(String[] args) {
+
+    }
 
     public static String duplicate(int[] numbers) {
         //find max

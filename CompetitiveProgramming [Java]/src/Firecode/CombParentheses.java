@@ -11,7 +11,7 @@ import java.util.Set;
 public class CombParentheses {
 
 /*
- Write a method to return all valid combinations of n-pairs of parentheses.
+Write a method to return all valid combinations of n-pairs of parentheses.
 
 The method should return an ArrayList of strings, in which each string represents a valid combination of parentheses.
 

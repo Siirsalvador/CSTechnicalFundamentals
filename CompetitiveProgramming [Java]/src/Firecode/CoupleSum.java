@@ -18,12 +18,9 @@ public class CoupleSum {
         int firstIdx, secondIdx;
         firstIdx = secondIdx = 0;
         for (int i = 0; i < numbers.length; i++) {
-            if (found) {
-                if (numbers[i] == target - numbers[firstIdx]) {
-                    secondIdx = i;
-                    break;
-                }
-                continue;
+            if (found && numbers[i] == target - numbers[firstIdx]) {
+                secondIdx = i;
+                break;
             } else if (list.contains(target - numbers[i])) {
                 firstIdx = i;
                 found = true;

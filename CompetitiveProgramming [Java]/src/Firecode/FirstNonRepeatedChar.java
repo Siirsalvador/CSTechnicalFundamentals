@@ -8,32 +8,27 @@ import java.util.Arrays;
  */
 public class FirstNonRepeatedChar {
     public static Character firstNonRepeatedCharacter(String str) {
-        int[] arr = new int[256];
+        if (str == null || str.isEmpty()) return null;
 
-        for(int i = 0; i < str.length(); i++){
-            int charVal = str.charAt(i) - 97 + 1;
-            arr[charVal]++;
+        int[] chars = new int[256];
+        for (int i = 0; i < str.length(); i++) {
+            chars[str.charAt(i)]++;
         }
 
-        System.out.println(Arrays.toString(arr));
-
-        int charVal = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] == 1){
-                System.out.println(i);
-                charVal = (i - 1) + 97;
-                return (char) charVal;
+        for (int i = 0; i < str.length(); i++) {
+            if (chars[str.charAt(i)] == 1) {
+                return str.charAt(i);
             }
         }
 
         return null;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str = "aabcdc";
         System.out.println(firstNonRepeatedCharacter(str));
 
-        int[][] matrix = {{1,2,3}, {4,5,6}};
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}};
         System.out.println(Arrays.toString(matrix[0]));
     }
 }

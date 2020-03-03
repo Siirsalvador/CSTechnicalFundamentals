@@ -46,7 +46,7 @@ public class KthSmallestNodeinBST {
             count++;
             if (count == k) return root;
 
-            root = root.left;
+            root = root.right;
         }
 
         return null;
