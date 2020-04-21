@@ -31,7 +31,7 @@ public class CriticalConnections {
         for (int i = 0; i < graph.length; i++) graph[i] = new ArrayList<>();
         for (List<Integer> conn : conns) {
             graph[conn.get(0)].add(conn.get(1));
-            graph[conn.get(0)].add(conn.get(1));
+            graph[conn.get(1)].add(conn.get(0));
         }
 
         boolean[] visited = new boolean[n];

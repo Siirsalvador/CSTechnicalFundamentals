@@ -46,7 +46,9 @@ public class NumberOfIslandsForKDimensions {
 
 
     */
-        System.out.println(numOfIslands(input));
+        //System.out.println(numOfIslands(input));
+
+        System.out.println((float) 15 / 18);
     }
 
     public static List<Integer> numOfIslands(int[][][] input) {

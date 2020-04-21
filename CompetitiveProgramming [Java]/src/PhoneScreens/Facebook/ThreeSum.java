@@ -28,8 +28,8 @@ public class ThreeSum {
             for (int j = i + 1; j < nums.length; j++) {
                 if (visited.contains(-(nums[i] + nums[j]))) {
                     tmp.add(nums[i]);
-                    tmp.add(nums[j]);
                     tmp.add(-(nums[i] + nums[j]));
+                    tmp.add(nums[j]);
                     res.add(tmp);
                     tmp = new ArrayList<>();
                 }
@@ -47,7 +47,7 @@ public class ThreeSum {
             return new ArrayList<>();
 
         Arrays.sort(nums);
-        Set<List<Integer>> res = new HashSet<>();
+        List<List<Integer>> res = new ArrayList<>();
 
         for (int i = 0; i < nums.length - 2; i++) {
             int start = i + 1;
