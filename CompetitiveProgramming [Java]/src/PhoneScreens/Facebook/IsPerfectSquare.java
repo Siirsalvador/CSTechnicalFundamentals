@@ -7,8 +7,9 @@ package PhoneScreens.Facebook;
 public class IsPerfectSquare {
     public static void main(String[] args) {
 
-        System.out.println(202051 * 202051); // Why we use long and not int
+        System.out.println((long)202051 * 202051); // Why we use long and not int
         System.out.println(isPerfectSquare(808201));
+        System.out.println(2147395600==Integer.MAX_VALUE);
     }
 
     public static boolean isPerfectSquare(int num) {

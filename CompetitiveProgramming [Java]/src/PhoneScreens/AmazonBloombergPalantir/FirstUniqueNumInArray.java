@@ -1,5 +1,7 @@
 package PhoneScreens.AmazonBloombergPalantir;
 
+import java.util.UUID;
+
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
  * @date: 2019-12-13
@@ -26,5 +28,15 @@ public class FirstUniqueNumInArray {
     }
 
     public static void main(String[] args){
+
+//        for(int i  = 0; i < 10; i++){
+//            System.out.println(UUID.randomUUID().toString().replaceAll("-","") + System.currentTimeMillis());
+//        }
+
+        String name = null;
+
+        assert name != null;
+
+        System.out.println(name);
     }
 }

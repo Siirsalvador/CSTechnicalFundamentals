@@ -1,9 +1,11 @@
 package UncategorizedChallenges;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) {
@@ -15,17 +17,15 @@ public class Test {
 //
 //        System.out.println(integer1+integer2+integer3);
 
-        Instant instant = Instant.now();
-        long timeStampSeconds = instant.getEpochSecond();
+//        Instant instant = Instant.now();
+//        long timeStampSeconds = instant.getEpochSecond();
 
-        System.out.println(timeStampSeconds);
+        String a = "00000200";
+        String b = a.replaceAll("^0+","");
+        String c = a.replaceAll("^0+(?!$)","");
+        System.out.println(b);
+        System.out.println(c);
 
-        char[] arr = {'a', 'b', 'c'};
-        char[] arr2 = {'a', 'b', 'c'};
 
-        Set<char[]> s = new HashSet<>();
-        s.add(arr);
-
-        System.out.println(s.contains(arr2));
     }
 }

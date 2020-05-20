@@ -9,7 +9,9 @@ import java.util.Stack;
 public class ConstructBSTFromPreorderII {
 
     public static void main(String[] args) {
-
+        int[] arr = {8, 5, 1, 7, 10, 12};
+        TreeNode r = bstFromPreorder2(arr);
+        System.out.println(r.val);
     }
 
     public static TreeNode bstFromPreorder(int[] preorder) {
@@ -58,6 +60,40 @@ public class ConstructBSTFromPreorderII {
 
         return root;
     }
+
+    public static TreeNode bstFromPreorder2(int[] preorder) {
+        if (preorder == null || preorder.length == 0)
+            return null;
+
+        TreeNode root = new TreeNode(preorder[0]);
+        constructBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE, 1, preorder);
+        return root;
+    }
+
+    private static int constructBST(TreeNode node, int minValue, int maxValue, int index, int[] preorder) {
+        if (index >= preorder.length)
+            return index;
+
+        int val = preorder[index];
+        if (val > minValue && val < node.val) {
+            node.left = new TreeNode(val);
+            index++;
+            index = constructBST(node.left, minValue, node.val, index, preorder);
+        }
+
+        if (index >= preorder.length)
+            return index;
+
+        val = preorder[index];
+        if (val > node.val && val < maxValue) {
+            node.right = new TreeNode(preorder[index]);
+            index++;
+            index = constructBST(node.right, node.val, maxValue, index, preorder);
+        }
+
+        return index;
+    }
+
 }
 
 // TreeNode Wrapper

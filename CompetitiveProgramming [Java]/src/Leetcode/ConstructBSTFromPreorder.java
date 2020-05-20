@@ -8,10 +8,10 @@ public class ConstructBSTFromPreorder {
 
     public static void main(String[] args) {
 
-        TreeNode node = new TreeNode(8);
-        insertIntoBST(node, 5);
-
-        System.out.println(node);
+//        TreeNode node = new TreeNode(8);
+//        insertIntoBST(node, 5);
+//
+//        System.out.println(node);
         int[] arr = {8, 5, 1, 7, 10, 12};
         TreeNode r = bstFromPreorder(arr);
         System.out.println(r.val);
@@ -21,10 +21,10 @@ public class ConstructBSTFromPreorder {
         if (preorder == null || preorder.length == 0)
             return null;
 
-        TreeNode root = null;
+        TreeNode root = new TreeNode(preorder[0]);
 
-        for (int i = 0; i < preorder.length; i++) {
-            root = insertIntoBST(root, preorder[i]);
+        for (int i = 1; i < preorder.length; i++) {
+            insertIntoBST(root, preorder[i]);
         }
 
         return root;
